@@ -1,0 +1,43 @@
+{{{
+  exports({ to: app.configPath('lock.ts') })
+}}}
+import env from '#start/env'
+import { defineConfig, stores } from '@adonisjs/lock'
+
+const lockConfig = defineConfig({
+  default: env.get('LOCK_STORE'),
+  stores: {
+    {{#if store === 'redis'}}
+    /**
+     * Redis store to save manage locks
+     */
+    redis: stores.redis({}),
+    {{/if}}
+    {{#if store === 'database'}}
+    /**
+     * Database store to manage locks
+     */
+    database: stores.database({
+      table: 'locks',
+      autoCreateTable: false
+    }),
+    {{/if}}
+    {{#if store === 'dynamodb'}}
+    /**
+     * DynamoDB store to manage locks
+     */
+    dynamodb: stores.dynamodb({}),
+    {{/if}}
+    /**
+     * Memory store could be used during
+     * testing
+     */
+    memory: stores.memory()
+  },
+})
+
+export default lockConfig
+
+declare module '@adonisjs/lock/types' {
+  export interface LockStoresList extends InferLockStores<typeof lockConfig> {}
+}

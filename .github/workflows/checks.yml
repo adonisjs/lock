@@ -1,0 +1,44 @@
+name: test
+on:
+  - push
+  - pull_request
+jobs:
+  lint:
+    uses: adonisjs/.github/.github/workflows/lint.yml@main
+
+  typecheck:
+    uses: adonisjs/.github/.github/workflows/typecheck.yml@main
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [20, 21]
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+      redis:
+        image: redis
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install
+        run: npm install
+      - name: Run Postgres Tests
+        run: npm run test
