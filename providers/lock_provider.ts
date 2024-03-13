@@ -7,18 +7,17 @@
  * file that was distributed with this source code.
  */
 
-import type { Verrou } from '@verrou/core'
 import type { ApplicationService } from '@adonisjs/core/types'
 
 import type { defineConfig } from '../index.js'
-import type { LockStoresList } from '../src/types.js'
+import type { LockService } from '../src/types.js'
 
 /**
  * Add lock manager type to the container bindings
  */
 declare module '@adonisjs/core/types' {
   export interface ContainerBindings {
-    'lock.manager': Verrou<LockStoresList>
+    'lock.manager': LockService
   }
 }
 

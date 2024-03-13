@@ -14,7 +14,7 @@ import type { ConfigProvider } from '@adonisjs/core/types'
 /**
  * A list of known lock stores inferred from the user config
  */
-export interface LockStoresList extends Record<string, StoreFactory> {}
+export interface LockStoresList {}
 
 /**
  * Helper method to resolve configured lock stores
@@ -28,7 +28,8 @@ export type InferLockStores<T extends { stores: Record<string, ConfigProvider<St
  * Lock service is a singleton instance of Verrou
  * configured using user app's config
  */
-export interface LockService extends Verrou<LockStoresList> {}
+export interface LockService
+  extends Verrou<LockStoresList extends Record<string, StoreFactory> ? LockStoresList : never> {}
 
 /**
  * Re-exporting types from Verrou
