@@ -15,7 +15,7 @@ import type { RedisConnection } from '@adonisjs/redis'
 import type { ConfigProvider } from '@adonisjs/core/types'
 import { RuntimeException } from '@adonisjs/core/exceptions'
 import type { RedisConnections } from '@adonisjs/redis/types'
-import type { DialectName, DynamoDbOptions, StoreFactory } from '@verrou/core/types'
+import type { DynamoDbOptions, StoreFactory } from '@verrou/core/types'
 
 /**
  * Different stores supported by the lock module
@@ -96,11 +96,8 @@ export const stores: {
       /**
        * Create the driver
        */
-      const { databaseStore } = await import('@verrou/core/drivers/database')
-      const store = databaseStore({
-        connection: rawConnection.connection.client,
-        dialect: dialect === 'postgres' ? 'pg' : (dialect as DialectName),
-      })
+      const { knexStore } = await import('@verrou/core/drivers/knex')
+      const store = knexStore({ connection: rawConnection.connection.client })
 
       return { driver: store }
     })
