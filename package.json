@@ -59,7 +59,7 @@
     "typescript": "^5.4.2"
   },
   "dependencies": {
-    "@verrou/core": "^0.2.0"
+    "@verrou/core": "^0.3.0"
   },
   "peerDependencies": {
     "@adonisjs/assembler": "^7.0.0",
