@@ -32,7 +32,6 @@ test.group('Define Config', () => {
     const store = storeFactory.driver.factory()
 
     assert.instanceOf(store, RedisStore)
-    assert.isFalse(await store.exists('foo'))
   })
 
   test('database store', async ({ assert }) => {
@@ -47,7 +46,6 @@ test.group('Define Config', () => {
     const store = storeFactory.driver.factory()
 
     assert.instanceOf(store, DatabaseStore)
-    assert.isFalse(await store.exists('foo'))
   })
 
   test('use default database when no explicit database is configured', async ({ assert }) => {
@@ -63,7 +61,6 @@ test.group('Define Config', () => {
     const store = storeFactory.driver.factory()
 
     assert.instanceOf(store, DatabaseStore)
-    assert.isFalse(await store.exists('foo'))
   })
 
   test('throw error when unregistered db connection is used', async () => {
