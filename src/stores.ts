@@ -97,7 +97,11 @@ export const stores: {
        * Create the driver
        */
       const { knexStore } = await import('@verrou/core/drivers/knex')
-      const store = knexStore({ connection: rawConnection.connection.client })
+      const store = knexStore({
+        connection: rawConnection.connection.client,
+        tableName: config?.tableName,
+        autoCreateTable: false,
+      })
 
       return { driver: store }
     })
