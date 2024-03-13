@@ -42,12 +42,4 @@ export default class LockProvider {
       })
     })
   }
-
-  /**
-   * Shutdown the lock provider by disconnecting all stores
-   */
-  async shutdown() {
-    const lock = await this.app.container.make('lock.manager')
-    await lock.disconnectAll()
-  }
 }
