@@ -18,7 +18,7 @@ const lockConfig = defineConfig({
      * Database store to manage locks
      */
     database: stores.database({
-      table: 'locks',
+      tableName: 'locks',
       autoCreateTable: false
     }),
     {{/if}}
