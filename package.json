@@ -25,7 +25,8 @@
     "pretest": "npm run lint",
     "test": "c8 npm run quick:test",
     "prebuild": "npm run lint && npm run clean",
-    "build": "tsup-node && npm run copy:templates",
+    "compile": "tsup-node && tsc --emitDeclarationOnly --declaration",
+    "build": "tsup-node && tsc --emitDeclarationOnly --declaration && npm run copy:templates",
     "release": "np",
     "version": "npm run build",
     "prepublishOnly": "npm run build"
@@ -125,7 +126,7 @@
     "outDir": "./build",
     "clean": true,
     "format": "esm",
-    "dts": true,
+    "dts": false,
     "target": "esnext"
   }
 }
