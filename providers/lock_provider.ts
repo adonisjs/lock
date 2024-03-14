@@ -10,7 +10,7 @@
 import type { ApplicationService } from '@adonisjs/core/types'
 
 import type { defineConfig } from '../index.js'
-import type { LockService } from '../src/types.js'
+import type { LockService, StoreFactory } from '../src/types.js'
 
 /**
  * Add lock manager type to the container bindings
@@ -32,7 +32,18 @@ export default class LockProvider {
       const { Verrou } = await import('@verrou/core')
       const config = this.app.config.get<ReturnType<typeof defineConfig>>('lock', {})
       const stores = Object.entries(config.stores).map(async ([name, store]) => {
-        return [name, await store.resolver(this.app)]
+        /**
+         * Resolve the store wether it's a simple factory function
+         * or a factory wrapped in a ConfigProvider
+         */
+        let resolvedStore: StoreFactory
+        if ('resolver' in store) {
+          resolvedStore = await store.resolver(this.app)
+        } else {
+          resolvedStore = store
+        }
+
+        return [name, resolvedStore]
       })
 
       return new Verrou({

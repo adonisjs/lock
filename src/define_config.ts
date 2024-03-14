@@ -15,7 +15,7 @@ import { InvalidArgumentsException } from '@adonisjs/core/exceptions'
  * Define lock configuration
  */
 export function defineConfig<
-  KnownStores extends Record<string, ConfigProvider<StoreFactory>>,
+  KnownStores extends Record<string, ConfigProvider<StoreFactory> | StoreFactory>,
 >(config: { default: keyof KnownStores; stores: KnownStores }) {
   if (!config.stores) {
     throw new InvalidArgumentsException('Missing "stores" property in lock config')
