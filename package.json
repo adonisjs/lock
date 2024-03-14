@@ -1,7 +1,7 @@
 {
   "name": "@adonisjs/lock",
   "description": "Atomic locks (mutex) for AdonisJS applications",
-  "version": "1.0.0-2",
+  "version": "1.0.0-3",
   "engines": {
     "node": ">=20.6.0"
   },
