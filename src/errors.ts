@@ -10,9 +10,4 @@
 /**
  * Re-exporting verrou errors
  */
-export {
-  E_LOCK_TIMEOUT,
-  E_LOCK_NOT_OWNED,
-  E_LOCK_STORAGE_ERROR,
-  E_LOCK_ALREADY_ACQUIRED,
-} from '@verrou/core'
+export { E_LOCK_NOT_OWNED, E_LOCK_STORAGE_ERROR, E_LOCK_ALREADY_ACQUIRED } from '@verrou/core'
