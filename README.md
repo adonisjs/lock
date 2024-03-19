@@ -8,7 +8,7 @@
 Atomic locks (mutex) for AdonisJS applications. The package is built on top of [Verrou](https://github.com/Julien-R44/verrou) and provides a simple API to acquire and release locks with support for multiple drivers.
 
 ## Official Documentation
-The documentation is available on the [AdonisJS website](https://docs.adonisjs.com/guides/lock/introduction).
+The documentation is available on the [AdonisJS website](https://docs.adonisjs.com/guides/locks).
 
 ## Contributing
 One of the primary goals of AdonisJS is to have a vibrant community of users and contributors who believes in the principles of the framework.
