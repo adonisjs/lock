@@ -27,7 +27,7 @@
     "prebuild": "npm run lint && npm run clean",
     "compile": "tsup-node && tsc --emitDeclarationOnly --declaration",
     "build": "tsup-node && tsc --emitDeclarationOnly --declaration && npm run copy:templates",
-    "release": "np",
+    "release": "npx release-it",
     "version": "npm run build",
     "prepublishOnly": "npm run build"
   },
@@ -52,9 +52,9 @@
     "eslint": "^8.57.0",
     "luxon": "^3.4.4",
     "mysql": "^2.18.1",
-    "np": "^10.0.6",
     "pg": "^8.12.0",
     "prettier": "^3.3.2",
+    "release-it": "^17.3.0",
     "timekeeper": "^2.3.1",
     "ts-node": "^10.9.2",
     "tsup": "^8.1.0",
@@ -102,11 +102,17 @@
     "access": "public",
     "tag": "latest"
   },
-  "np": {
-    "message": "chore(release): %s",
-    "tag": "latest",
-    "branch": "main",
-    "anyBranch": false
+  "release-it": {
+    "git": {
+      "commitMessage": "chore(release): ${version}",
+      "tagAnnotation": "v${version}",
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true,
+      "releaseName": "v${version}",
+      "web": true
+    }
   },
   "c8": {
     "reporter": [
