@@ -8,7 +8,7 @@
  */
 
 import app from '@adonisjs/core/services/app'
-import type { LockService } from '../src/types.js'
+import type { LockService } from '../src/types.ts'
 
 let lock: LockService
 

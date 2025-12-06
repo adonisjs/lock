@@ -8,16 +8,16 @@
  */
 
 import { test } from '@japa/runner'
-import { Database } from '@adonisjs/lucid/database'
-import { RedisService } from '@adonisjs/redis/types'
+import { type Database } from '@adonisjs/lucid/database'
+import { type RedisService } from '@adonisjs/redis/types'
 import { RedisStore } from '@verrou/core/drivers/redis'
-import { ApplicationService } from '@adonisjs/core/types'
+import { type ApplicationService } from '@adonisjs/core/types'
 import { MemoryStore } from '@verrou/core/drivers/memory'
 import { AppFactory } from '@adonisjs/core/factories/app'
 import { DatabaseStore } from '@verrou/core/drivers/database'
 
-import { defineConfig, stores } from '../index.js'
-import { createDatabase, createRedis, createTables } from './helpers.js'
+import { defineConfig, stores } from '../index.ts'
+import { createDatabase, createRedis, createTables } from './helpers.ts'
 
 test.group('Define Config', () => {
   test('redis store', async ({ assert }) => {

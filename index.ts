@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-export { stores } from './src/stores.js'
-export * as errors from './src/errors.js'
-export { configure } from './configure.js'
-export { defineConfig } from './src/define_config.js'
+export { stores } from './src/stores.ts'
+export * as errors from './src/errors.ts'
+export { configure } from './configure.ts'
+export { defineConfig } from './src/define_config.ts'

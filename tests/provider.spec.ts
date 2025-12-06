@@ -9,11 +9,11 @@
 
 import { test } from '@japa/runner'
 import { Verrou } from '@verrou/core'
-import { LockStore } from '@verrou/core/types'
-import { RedisService } from '@adonisjs/redis/types'
+import { type LockStore } from '@verrou/core/types'
+import { type RedisService } from '@adonisjs/redis/types'
 
-import { defineConfig, stores } from '../index.js'
-import { createRedis, setupApp } from './helpers.js'
+import { defineConfig, stores } from '../index.ts'
+import { createRedis, setupApp } from './helpers.ts'
 
 test.group('Provider', () => {
   test('register lock provider', async ({ assert }) => {
@@ -21,7 +21,7 @@ test.group('Provider', () => {
 
     const { app } = await setupApp({
       rcFileContents: {
-        providers: [() => import('../providers/lock_provider.js')],
+        providers: [() => import('../providers/lock_provider.ts')],
       },
       config: {
         lock: defineConfig({

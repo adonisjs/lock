@@ -53,7 +53,7 @@ test.group('Configure', (group) => {
       .assertPasses('redis')
       .chooseOption(1)
 
-    const command = await ace.create(Configure, ['../index.js'])
+    const command = await ace.create(Configure, ['../index.ts'])
     await command.exec()
 
     await assert.fileExists('config/lock.ts')
@@ -95,7 +95,7 @@ test.group('Configure', (group) => {
     await fs.create('adonisrc.ts', `export default defineConfig({})`)
 
     const ace = await app.container.make('ace')
-    const command = await ace.create(Configure, ['../index.js', '--store=database'])
+    const command = await ace.create(Configure, ['../index.ts', '--store=database'])
     await command.exec()
 
     await assert.fileExists('config/lock.ts')
@@ -138,7 +138,7 @@ test.group('Configure', (group) => {
 
     const ace = await app.container.make('ace')
     ace.ui.switchMode('raw')
-    const command = await ace.create(Configure, ['../index.js', '--store=foo'])
+    const command = await ace.create(Configure, ['../index.ts', '--store=foo'])
     await command.exec()
 
     command.assertFailed()
@@ -173,7 +173,7 @@ test.group('Configure', (group) => {
     await fs.create('adonisrc.ts', `export default defineConfig({})`)
 
     const ace = await app.container.make('ace')
-    const command = await ace.create(Configure, ['../index.js', '--store=database'])
+    const command = await ace.create(Configure, ['../index.ts', '--store=database'])
     await command.exec()
 
     await assert.fileExists(`database/migrations/${new Date().getTime()}_create_locks_table.ts`)

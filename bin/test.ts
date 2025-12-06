@@ -11,7 +11,7 @@ import { assert } from '@japa/assert'
 import { fileSystem } from '@japa/file-system'
 import { configure, processCLIArgs, run } from '@japa/runner'
 
-import { BASE_URL } from '../tests/helpers.js'
+import { BASE_URL } from '../tests/helpers.ts'
 
 processCLIArgs(process.argv.splice(2))
 

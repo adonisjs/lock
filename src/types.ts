@@ -28,8 +28,9 @@ export type InferLockStores<T extends { stores: Record<string, ConfigProvider<St
  * Lock service is a singleton instance of Verrou
  * configured using user app's config
  */
-export interface LockService
-  extends Verrou<LockStoresList extends Record<string, StoreFactory> ? LockStoresList : never> {}
+export interface LockService extends Verrou<
+  LockStoresList extends Record<string, StoreFactory> ? LockStoresList : never
+> {}
 
 /**
  * Re-exporting types from Verrou

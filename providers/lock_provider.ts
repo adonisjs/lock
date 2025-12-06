@@ -9,8 +9,8 @@
 
 import type { ApplicationService } from '@adonisjs/core/types'
 
-import type { defineConfig } from '../index.js'
-import type { LockService, StoreFactory } from '../src/types.js'
+import type { defineConfig } from '../index.ts'
+import type { LockService, StoreFactory } from '../src/types.ts'
 
 /**
  * Add lock manager type to the container bindings
