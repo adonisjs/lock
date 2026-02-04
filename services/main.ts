@@ -10,10 +10,10 @@
 import app from '@adonisjs/core/services/app'
 import type { LockService } from '../src/types.ts'
 
-let lock: LockService
+let lockManager: LockService
 
 await app.booted(async () => {
-  lock = await app.container.make('lock.manager')
+  lockManager = await app.container.make('lock.manager')
 })
 
-export { lock as default }
+export { lockManager as default }
