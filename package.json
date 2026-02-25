@@ -23,7 +23,7 @@
     "format": "prettier --write .",
     "quick:test": "node --import=@poppinss/ts-exec --enable-source-maps bin/test.ts",
     "pretest": "npm run lint",
-    "test": "c8 npm run quick:test",
+    "test": "npm run quick:test",
     "prebuild": "npm run lint && npm run clean",
     "compile": "tsdown && tsc --emitDeclarationOnly --declaration",
     "build": "tsdown && tsc --emitDeclarationOnly --declaration && npm run copy:templates",
@@ -32,44 +32,47 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@adonisjs/assembler": "^8.0.0-next.19",
-    "@adonisjs/core": "^7.0.0-next.13",
-    "@adonisjs/eslint-config": "^3.0.0-next.9",
-    "@adonisjs/lucid": "^22.0.0-next.1",
+    "@adonisjs/assembler": "^8.0.0",
+    "@adonisjs/core": "^7.0.0",
+    "@adonisjs/eslint-config": "^3.0.0",
+    "@adonisjs/lucid": "^22.0.0",
     "@adonisjs/prettier-config": "^1.4.5",
-    "@adonisjs/redis": "^10.0.0-next.1",
-    "@adonisjs/tsconfig": "^2.0.0-next.3",
+    "@adonisjs/redis": "^10.0.0",
+    "@adonisjs/tsconfig": "^2.0.0",
     "@japa/assert": "^4.2.0",
     "@japa/file-system": "^3.0.0",
     "@japa/runner": "^5.3.0",
-    "@poppinss/ts-exec": "^1.4.3",
-    "@release-it/conventional-changelog": "^10.0.4",
-    "@types/node": "^25.2.0",
+    "@poppinss/ts-exec": "^1.4.4",
+    "@release-it/conventional-changelog": "^10.0.5",
+    "@types/node": "^25.3.0",
     "better-sqlite3": "^12.6.2",
-    "c8": "^10.1.3",
+    "c8": "^11.0.0",
     "copyfiles": "^2.4.1",
     "del-cli": "^7.0.0",
-    "dotenv": "^17.2.3",
-    "eslint": "^9.39.2",
+    "dotenv": "^17.3.1",
+    "eslint": "^10.0.2",
     "luxon": "^3.7.2",
     "mysql": "^2.18.1",
     "pg": "^8.18.0",
     "prettier": "^3.8.1",
     "release-it": "^19.2.4",
     "timekeeper": "^2.3.1",
-    "tsdown": "^0.20.1",
+    "tsdown": "^0.20.3",
     "typescript": "^5.9.3"
   },
   "dependencies": {
     "@verrou/core": "^0.5.2"
   },
   "peerDependencies": {
-    "@adonisjs/assembler": "^8.0.0-next.19",
-    "@adonisjs/core": "^7.0.0-next.13",
-    "@adonisjs/lucid": "^22.0.0-next.1",
-    "@adonisjs/redis": "^10.0.0-next.1"
+    "@adonisjs/assembler": "^8.0.0-next.19 || ^8.0.0",
+    "@adonisjs/core": "^7.0.0-next.13 || ^7.0.0",
+    "@adonisjs/lucid": "^22.0.0-next.1 || ^22.0.0",
+    "@adonisjs/redis": "^10.0.0-next.1 || ^10.0.0"
   },
   "peerDependenciesMeta": {
+    "@adonisjs/assembler": {
+      "optional": true
+    },
     "@adonisjs/redis": {
       "optional": true
     },
