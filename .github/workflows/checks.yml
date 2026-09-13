@@ -17,6 +17,7 @@ jobs:
       fail-fast: false
       matrix:
         node-version: [latest]
+        redis-version: [10, 11]
     services:
       postgres:
         image: postgres:15
@@ -42,5 +43,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install
         run: npm install
+      - name: Install @adonisjs/redis v${{ matrix.redis-version }}
+        run: npm install --no-save @adonisjs/redis@${{ matrix.redis-version }}
       - name: Run Postgres Tests
         run: npm run test
