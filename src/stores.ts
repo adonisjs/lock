@@ -32,16 +32,26 @@ export const stores: {
   /**
    * Redis store
    * You must install @adonisjs/redis to use this driver
+   *
+   * The Redis connection is opened on the first use of the store, and
+   * not when the lock manager is created. Verrou calls the factory on
+   * the first use of the store and caches the store instance.
    */
   redis(config) {
     return configProvider.create(async (app) => {
       const redis = await app.container.make('redis')
       const { redisStore } = await import('@verrou/core/drivers/redis')
 
-      const redisConnection = redis.connection(config.connectionName) as any as RedisConnection
-      const store = redisStore({ connection: redisConnection.ioConnection })
-
-      return { driver: store }
+      return {
+        driver: {
+          factory() {
+            const redisConnection = redis.connection(
+              config.connectionName
+            ) as any as RedisConnection
+            return redisStore({ connection: redisConnection.ioConnection }).factory()
+          },
+        },
+      }
     })
   },
 
