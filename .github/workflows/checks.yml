@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [latest]
+        node-version: [24]
         redis-version: [10, 11]
     services:
       postgres:
